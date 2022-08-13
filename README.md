@@ -1,31 +1,31 @@
+# Working with files and directories in .NET
 
-# Contributing
+## Scenario
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+Tailwind Traders has each of its stores write its sales total to a file and send that file to a central location. To use those files, the company needs to create a batch process that can work with the file system.
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+Tailwind Traders has a root folder called stores. In that folder are subfolders organized by store number and inside those folders are the sales-total and inventory files. The structure looks like this example:
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+```
+stores
+│   
+└───201
+|   |   inventory.text
+│   │   sales.json
+│   │   salestotals.json
+|
+└───202
+    │   inventory.text
+    │   sales.json
+    |   salestotals.json
+```
 
-# Legal Notices
+## Requirements
 
-Microsoft and any contributors grant you a license to the Microsoft documentation and other content
-in this repository under the [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode),
-see the [LICENSE](LICENSE) file, and grant you a license to any code in the repository under the [MIT License](https://opensource.org/licenses/MIT), see the
-[LICENSE-CODE](LICENSE-CODE) file.
-
-Microsoft, Windows, Microsoft Azure and/or other Microsoft products and services referenced in the documentation
-may be either trademarks or registered trademarks of Microsoft in the United States and/or other countries.
-The licenses for this project do not grant you rights to use any Microsoft names, logos, or trademarks.
-Microsoft's general trademark guidelines can be found at http://go.microsoft.com/fwlink/?LinkID=254653.
-
-Privacy information can be found at https://privacy.microsoft.com/en-us/
-
-Microsoft and any contributors reserve all other rights, whether under their respective copyrights, patents,
-or trademarks, whether by implication, estoppel or otherwise.
+Working with the file system in .NET:
+- Create a new directory called salesTotalDir at the root level
+- Create a new totals.txt file inside the newly created salesTotalDir directory
+- Find all *.json files the stores directory and its sub-folders
+- Create a SalesData record so only the Total field in sales.json files are added and the OverallTotal field in the salestotals.json are not
+- Add the value of the Total field of each *.json file to the salesTotal variable
+- Append the salesTotal to the totals.txt file created earlier
